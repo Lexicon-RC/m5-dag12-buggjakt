@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kafé Kardemumma – beställ</title>
+  <link rel="stylesheet" href="stil.css">
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Kafé Kardemumma</h1>
+    <p id="oppet"></p>
+  </header>
+  <main>
+    <section>
+      <h2>Meny</h2>
+      <div class="filter">
+        <label for="kategori">Kategori</label>
+        <select id="kategori">
+          <option value="alla">Alla</option>
+          <option value="bakverk">Bakverk</option>
+          <option value="dryck">Dryck</option>
+          <option value="lunch">Lunch</option>
+        </select>
+        <label><input type="checkbox" id="veg"> Bara vegetariskt</label>
+      </div>
+      <div id="meny" class="meny"></div>
+    </section>
+    <section>
+      <h2>Din korg (<span id="antal">0</span>)</h2>
+      <div id="korg"></div>
+      <label for="kommentar">Meddelande till köket</label>
+      <textarea id="kommentar" rows="2"></textarea>
+      <div id="status"></div>
+    </section>
+  </main>
+</body>
+</html>

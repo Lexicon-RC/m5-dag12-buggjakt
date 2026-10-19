@@ -1,0 +1,10 @@
+body { font-family: system-ui, sans-serif; max-width: 52rem; margin: 0 auto; padding: 1rem; line-height: 1.5; color: #1f1f1f; }
+h1, h2 { font-family: Georgia, serif; color: #8c1010; }
+.meny { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: 1rem; }
+article { border: 1px solid #ccc; border-radius: 8px; padding: 0.75rem; }
+article img { width: 100%; height: 6rem; object-fit: contain; }
+button { font: inherit; padding: 6px 12px; cursor: pointer; background: #d60000; color: #fff; border: 0; border-radius: 6px; }
+button:focus-visible { outline: 3px solid #1f1f1f; outline-offset: 2px; }
+.filter { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 1rem; }
+#status { margin-top: 0.5rem; font-weight: 700; }
+textarea { width: 100%; }
