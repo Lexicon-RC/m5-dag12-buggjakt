@@ -1,6 +1,6 @@
 # Kvalitetslista
 
-Gå igenom listan för appen när buggarna är rättade, och för ditt eget projekt före redovisningen. Bocka av `[x]` och skriv något kort när du kollat. Ett `[ ]` du inte kan bocka av är en brist att åtgärda eller förklara.
+Gå igenom listan för appen när buggarna är rättade, och igen före redovisningen. Bocka av `[x]` och skriv något kort när du kollat. Ett `[ ]` du inte kan bocka av är en brist att åtgärda eller förklara.
 
 ## 1. Funktion
 - [ ] Alla tester är gröna (`tests.html`).
@@ -49,4 +49,3 @@ Vad var det viktigaste Lighthouse hittade, och vad gjorde du åt det?
 - [ ] README förklarar vad appen gör och hur man startar den.
 - [ ] Det står hur man kör testerna.
 - [ ] Planerade val och avvägningar är nedskrivna (`docs/`).
-- [ ] AI-loggen (`docs/ai-logg.md`) är aktuell.

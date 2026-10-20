@@ -1,26 +1,24 @@
 # Buggjakt: logg
 
-Appen har **elva buggar**. Några syns som röda tester, andra syns bara om du läser koden, provar appen eller använder DevTools. Skriv en rad per bugg du hittar. Gör två omgångar: först utan AI, sedan med.
+Appen har **elva buggar**. Några syns som röda tester, andra syns bara om du läser koden, provar appen eller använder DevTools. Skriv en rad per bugg du hittar. Gör två omgångar: först prova och felsöka, sedan läsa koden.
 
-## Omgång 1: utan AI (20 minuter)
+## Omgång 1: prova och felsök (20 minuter)
 Tid start: ____  Tid slut: ____
 
 | # | Symptom (vad såg du?) | Fil och rad | Hur hittade du den? (test, DevTools, läsning) | Rättad? |
 |---|---|---|---|---|
 | 1 | | | | |
 
-Antal buggar jag hittade utan AI:
+Antal buggar jag hittade i omgång 1:
 
-## Omgång 2: med AI
-Vad frågade du AI? (Klistra in prompten.)
+## Omgång 2: läs koden (20 minuter)
+Tid start: ____  Tid slut: ____
 
+| # | Symptom eller misstanke | Fil och rad | Bekräftat med test eller DevTools? | Rättad? |
+|---|---|---|---|---|
+| 1 | | | | |
 
-| # | AI:s påstående | Stämde det? (kontrollerat med test/DevTools) | Falsklarm? |
-|---|---|---|---|
-| 1 | | | |
-
-Antal buggar AI hittade som jag inte hittat själv:
-Antal falsklarm (AI påstod ett fel som inte fanns):
+Antal nya buggar jag hittade i omgång 2:
 
 ## Så hittade jag dem (strategi)
 Vilka metoder fungerade bäst? (Rödgröna tester? Console? Network? Läsa koden?)
