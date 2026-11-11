@@ -25,7 +25,7 @@ Vilka metoder fungerade bäst? (Rödgröna tester? Console? Network? Läsa koden
 
 
 ## Ett test per bugg
-Pekar på vilket test i tests-egna.js som visar varje bugg (rött före, grönt efter):
+Pekar på vilket test i src/tests-egna.ts som visar varje bugg (rött före, grönt efter):
 
 | # | Test |
 |---|---|

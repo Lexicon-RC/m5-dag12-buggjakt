@@ -1,15 +1,16 @@
 // Testerna som följer med appen. Ändra inte den här filen. Dina egna tester skriver du i tests-egna.js.
 // Några av dem är röda. Det är första ledtråden. Men alla buggar har inte ett rött test.
-import { test, testAsync, assertEqual, assertTrue, visaResultat } from "./testlib.js";
-import { formateraPris } from "./pris.js";
-import { laggTill, taBort, totalPris, antalSt } from "./korg.js";
-import { arOppetNu } from "./tider.js";
-import { filtrera } from "./filter.js";
+import { test, testAsync, assertEqual, assertTrue, visaResultat } from "./testlib";
+import { formateraPris } from "./pris";
+import { laggTill, taBort, totalPris, antalSt } from "./korg";
+import { arOppetNu } from "./tider";
+import type { Ratt } from "./typer";
+import { filtrera } from "./filter";
 
-const meny = [
-  { id: 1, namn: "Bulle", pris: 35, kategori: "bakverk", vegetarisk: true },
-  { id: 2, namn: "Kaffe", pris: 32.5, kategori: "dryck", vegetarisk: true },
-  { id: 3, namn: "Macka", pris: 59, kategori: "lunch", vegetarisk: false },
+const meny: Ratt[] = [
+  { id: 1, namn: "Bulle", pris: 35, kategori: "bakverk", vegetarisk: true, bild: "" },
+  { id: 2, namn: "Kaffe", pris: 32.5, kategori: "dryck", vegetarisk: true, bild: "" },
+  { id: 3, namn: "Macka", pris: 59, kategori: "lunch", vegetarisk: false, bild: "" },
 ];
 
 // ---- pris ----

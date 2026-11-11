@@ -1,7 +1,8 @@
-import { formateraPris } from "./pris.js";
-import { totalPris } from "./korg.js";
+import type { Ratt, KorgRad } from "./typer";
+import { formateraPris } from "./pris";
+import { totalPris } from "./korg";
 
-export function visaMeny(container, meny) {
+export function visaMeny(container: HTMLElement, meny: Ratt[]): void {
   container.replaceChildren();
   for (const ratt of meny) {
     const kort = document.createElement("article");
@@ -14,7 +15,7 @@ export function visaMeny(container, meny) {
     const knapp = document.createElement("button");
     knapp.type = "button";
     knapp.className = "lagg-till";
-    knapp.dataset.id = ratt.id;
+    knapp.dataset.id = String(ratt.id);
     knapp.textContent = "Lägg i korgen";
     kort.append(bild, rubrik, pris, knapp);
     container.append(kort);
@@ -22,7 +23,7 @@ export function visaMeny(container, meny) {
 }
 
 // Visar korgen som en lista, totalsumman och (om det finns) kundens kommentar till köket.
-export function visaKorg(container, korg, meny, kommentar) {
+export function visaKorg(container: HTMLElement, korg: KorgRad[], meny: Ratt[], kommentar: string): void {
   let html = "<ul>";
   for (const rad of korg) {
     const ratt = meny.find((r) => r.id === rad.id);
@@ -38,6 +39,6 @@ export function visaKorg(container, korg, meny, kommentar) {
   container.innerHTML = html;
 }
 
-export function visaStatus(element, text) {
+export function visaStatus(element: HTMLElement, text: string): void {
   element.textContent = text;
 }

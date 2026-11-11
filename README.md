@@ -1,6 +1,6 @@
 # Dag 12 · Buggjakt och kvalitet
 
-*Modul 5, UI/UX & Frontendutveckling (JavaScript), Lexicon IT-Proffs*
+*Modul 5, UI/UX & Frontendutveckling (TypeScript), Lexicon IT-Proffs*
 
 ## Vad du ska göra idag
 
@@ -10,23 +10,34 @@ Du lär dig **felsöka**: hitta, förstå och rätta buggar systematiskt. Du jag
 
 Att skriva kod är en mindre del av jobbet än att hitta varför den inte fungerar. Idag får du en app som *nästan* fungerar. Den har elva buggar: fyra syns som röda tester, resten kräver att du provar appen, läser koden och använder DevTools. Du kommer också märka vilka metoder som hittar flest: att prova appen, att läsa koden och att använda DevTools.
 
+## TypeScript idag: typer hittar vissa buggar, inte alla
+
+- **Starten ger ett typfel direkt.** Kör `npm run typecheck` innan du gör något annat. Felet i `src/korg.ts` (`Type 'string' is not assignable to type 'number'`) är bugg 5, id som sträng från `dataset`, hittad av TypeScript utan test och utan att du klickat i appen.
+- **Typer hittar inte logikbuggar.** Fel summa, fel helgtid, omvänt filter och XSS har alla rätt typer. Det är därför testerna och läsningen behövs. Skriv ner vilka av de elva buggarna som typkontrollen *hade kunnat* hitta med bättre typer.
+- **`JSON.parse` ger `any`.** Det är därför `laddaKorg` kan krascha: typen säger "korg" men datat kan vara vad som helst. Rättningen är att behandla det som `unknown` och validera formen.
+- **`fetch` ger `any` från `.json()`.** Typen `Ratt[]` är ett löfte du själv ger, inte något TypeScript kontrollerat.
+- **Vite kör koden även med typfel.** Appen startar ändå. Typkontrollen är ett separat steg (`npm run typecheck`).
+
 ## Så arbetar du (samma som alltid)
 
 1. **Forka** dagens repo på GitHub (*Fork → Create fork*).
-2. **Klona din fork:** *Code → HTTPS → kopiera adressen*. I terminalen (Ctrl+ö i VS Code): `git clone <adressen>`. Öppna den nya mappen i VS Code och starta *Live Server*.
-3. **Gör uppgiften.** Spara och kontrollera i webbläsaren och Console (F12) efter varje steg. Gör en commit efter varje avslutat steg: `git add .` och `git commit -m "Beskriv vad du gjorde"`.
-4. **Skicka upp** när du är klar: `git push`.
-5. **Lämna in i Microsoft Forms.**
+2. **Klona din fork:** *Code → HTTPS → kopiera adressen*. I terminalen (Ctrl+ö i VS Code): `git clone <adressen>`. Öppna den nya mappen i VS Code.
+3. **Installera verktygen, en gång per repo:** `npm install` i terminalen.
+4. **Starta servern:** `npm run dev`. Öppna adressen den skriver ut (oftast `http://localhost:5173/`). Tryck F12 och välj fliken *Console*. Stoppa med Ctrl+C. Testsidan öppnar du på samma server: `http://localhost:5173/tests.html` (lägg till `/tests.html` efter adressen).
+5. **Gör uppgiften.** Spara och kontrollera i webbläsaren och Console efter varje steg. Gör en commit efter varje avslutat steg: `git add .` och `git commit -m "Beskriv vad du gjorde"`.
+6. **Kontrollera typerna:** `npm run typecheck`. Tyst betyder att alla typer stämmer. Röda understrykningar i VS Code är TypeScript som varnar.
+7. **Skicka upp** när du är klar: `git push`.
+8. **Lämna in i Microsoft Forms.**
 
-Fastnar du: skriv ner exakt var och vad du försökt (och vilket felmeddelande du fick), och ta det först i nästa handledda pass.
+Fastnar du: skriv ner exakt var och vad du försökt (och vilket felmeddelande du fick), och ta det först i nästa handledda pass. Problem med `npm` eller Node? Läs *Elevguide: Node, Vite och TypeScript*.
 
-Filer som använder `import` fungerar bara när sidan öppnas med *Live Server*. Dubbelklickar du på en HTML-fil hamnar du på `file://` och får ett CORS-fel i Console.
+> Vite tar bara bort typerna och kör koden. Den kontrollerar dem inte. Sidan kan alltså köras trots röda understrykningar.
 
 ## Uppgiften steg för steg
 
 ### Steg 1. Klona, starta och prova appen
 
-Forka repot, kör `git clone`, öppna i VS Code, starta Live Server på `index.html`. Lägg saker i korgen, ta bort, filtrera, skriv en kommentar, ladda om. Skriv i `docs/buggjakt.md` allt som verkar konstigt, innan du tittar i koden. Starta sedan `tests.html` och se vilka tester som är röda.
+Forka repot, kör `git clone`, öppna i VS Code, starta Vite-servern på `index.html`. Lägg saker i korgen, ta bort, filtrera, skriv en kommentar, ladda om. Skriv i `docs/buggjakt.md` allt som verkar konstigt, innan du tittar i koden. Starta sedan `tests.html` och se vilka tester som är röda.
 
 ### Steg 2. Omgång 1: prova och felsök (20 minuter)
 
@@ -38,7 +49,7 @@ Sätt en timer på 20 minuter till. Läs koden fil för fil och skriv vad varje 
 
 ### Steg 4. Ett test per bugg (rött först)
 
-För varje bugg: skriv ett test i `tests-egna.js` som är RÖTT med buggen kvar. Först när du sett testet misslyckas rättar du buggen och ser testet bli grönt. Rätta en bugg i taget och prova appen efter varje. Buggar skymmer varandra: bugg 5 gör att korgen ser trasig ut och döljer andra fel. Ändra aldrig `tests.js`.
+För varje bugg: skriv ett test i `src/tests-egna.ts` som är RÖTT med buggen kvar. Först när du sett testet misslyckas rättar du buggen och ser testet bli grönt. Rätta en bugg i taget och prova appen efter varje. Buggar skymmer varandra: bugg 5 gör att korgen ser trasig ut och döljer andra fel. Ändra aldrig `src/tests.ts`.
 
 ### Steg 5. Rätta och commit en bugg i taget
 
@@ -60,9 +71,9 @@ Installera tillägget *axe DevTools* i Chrome och kör det på appen. Hittar det
 
 - [ ] Du har hittat och loggat så många buggar du kan (och räknat dem).
 - [ ] Du har gjort båda omgångarna (prova och läsa koden).
-- [ ] Varje bugg du rättat har ett test i `tests-egna.js` som var rött före rättningen.
-- [ ] Alla tester (`tests.js` och `tests-egna.js`) är gröna.
-- [ ] `tests.js` är oförändrad (`git diff tests.js` är tom).
+- [ ] Varje bugg du rättat har ett test i `src/tests-egna.ts` som var rött före rättningen.
+- [ ] Alla tester (`src/tests.ts` och `src/tests-egna.ts`) är gröna.
+- [ ] `src/tests.ts` är oförändrad (`git diff src/tests.ts` är tom).
 - [ ] Du har kört Lighthouse före och efter och fyllt i tabellen.
 - [ ] Du har bockat av eller förklarat varje punkt i `KVALITETSLISTA.md` för appen.
 - [ ] Du har minst en commit per rättad bugg.
@@ -84,7 +95,7 @@ Installera tillägget *axe DevTools* i Chrome och kör det på appen. Hittar det
 I formuläret fyller du i:
 
 1. Länk till din fork av det här repot.
-2. Reflektion: Vilken bugg var svårast att hitta, och varför? Vilken metod (prova, DevTools, läsa koden, testerna) hittade flest buggar? Vad gör du annorlunda nästa gång?
+2. Reflektion: Vilken bugg var svårast att hitta, och varför? Vilken metod (prova, DevTools, läsa koden, testerna) hittade flest buggar? Vad gör du annorlunda nästa gång? Vilken av de elva buggarna hittade TypeScript åt dig, och vilka kan typer aldrig hitta?
 
 ## Vill du mer? (frivilligt)
 
